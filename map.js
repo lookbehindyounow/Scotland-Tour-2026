@@ -4,10 +4,11 @@ const maptions={
     minZoom:7,
     attribution:"&copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
 }
-console.log(maptions.maxBounds);
+console.log(1);
 const normal=L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",maptions).addTo(map); // osm map images
 // const alt=L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png",maptions); // alt tileLayer with different map style
 // const layerControl=L.control.layers({"normal":normal,"alt":alt},[]).addTo(map); // allow switching between map styles
+console.log(2);
 
 const icons={ // get icons & create leaflet icon objects
     "accom":L.icon({
@@ -41,6 +42,7 @@ const icons={ // get icons & create leaflet icon objects
         iconAnchor:[17.3,50]
     })
 }
+console.log(3);
 
 // hard coding the amount of routes cause it's very hard to get client side js to scan a server side folder
 // & I didn't want to write an extra thing running server side just for this
@@ -56,6 +58,7 @@ for (let i=0;i<2;i++) { // do the same for ferry routes
     .then(text=>text.split("\n").map(line=>line.split(",")));
     L.polyline(routePoints,{smoothFactor:3,weight:2.5,dashArray:"5 7"}).addTo(map);
 }
+console.log(4);
 
 const locations=await fetch("/locations.csv") // get locations
 .then(r=>r.text())
@@ -73,6 +76,7 @@ const locations=await fetch("/locations.csv") // get locations
         "marker":{}
     }})
 );
+console.log(5);
 
 let currentPopup; // when a new popup is created & assigned to this var, leaflet removes the old one
 // so declaring here (globally) means only one popup can show at a time
@@ -81,6 +85,7 @@ function createPopup(location) {
     .setContent(`<div><a href="http://${location.link}">${location.name}</a><p>${location.description}</p></div>`) // content of popup
     .openOn(map); // render
 }
+console.log(6);
 
 locations.map(location=>{
     const marker=L.marker(location.coords,{icon:icons[location.icon]}); // create marker for each location
@@ -99,6 +104,7 @@ locations.map(location=>{
     location.zoomThreshold==7?marker.addTo(map):{}; // only render markers with zoomThreshold 7 on initial load
     return location;
 });
+console.log(7);
 
 let currentRegion;
 locations.forEach(location=>{ // add locations to index
@@ -135,6 +141,7 @@ locations.forEach(location=>{ // add locations to index
         map.setView(location.coords,zoom); // set map view to selected location marker position (zoom determined above)
     };
 });
+console.log(8);
 
 map.on("zoomend",()=>{
     const zoom=map.getZoom();
@@ -142,3 +149,4 @@ map.on("zoomend",()=>{
         zoom>=location.zoomThreshold?map.addLayer(location.marker):map.removeLayer(location.marker);
     });
 });
+console.log(9);
