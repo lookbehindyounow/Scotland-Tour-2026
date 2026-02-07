@@ -48,7 +48,11 @@ console.log(3);
 // & I didn't want to write an extra thing running server side just for this
 for (let i=0;i<3;i++) {
     const routePoints=await fetch(`./generated_route_${i}.csv`) // get driving route points
-    .then(r=>r.text())
+    .then(r=>{ //debug
+        console.log(r);
+        return r.text();
+    })
+    // .then(r=>r.text())
     .then(text=>text.split("\n").map(line=>line.split(","))); // format csv to array of [lat,lng]
     L.polyline(routePoints,{smoothFactor:3,weight:5}).addTo(map); // render polyline from route
 }
