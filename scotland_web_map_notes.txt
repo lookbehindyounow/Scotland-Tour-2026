@@ -1,0 +1,77 @@
+USING OSRM
+
+start docker daemon - sudo systemctl start docker
+or just "dockerd" in another shell might be easier if running on windows with wsl
+
+get osrm backend docker image - sudo docker pull osrm/osrm-backend
+
+***
+can skip this chunk if already have processed osrm data
+https://github.com/Project-OSRM/osrm-backend/blob/master/README.md
+
+Get .osm.pbf file (map data) from https://download.geofabrik.de/europe/united-kingdom/scotland.html
+
+extract osm data - sudo docker run -t -v <location of .osm.pbf file>:/data osrm/osrm-backend osrm-extract -p /opt/car.lua /data/<scotland .osm.pbf file> || echo "osrm-extract failed"
+
+some kind of processing step 1 (divides the routing graph into a hierarchical cell structure using recursive bisection) - sudo docker run -t -v <location of .osrm.* files>:/data osrm/osrm-backend osrm-partition /data/<scotland .osrm.* files name>.osrm || echo "osrm-partition failed"
+
+some kind of processing step 2 (applies edge weights and processes traffic updates on the partitioned graph structure) - sudo docker run -t -v <location of .osrm.* files>:/data osrm/osrm-backend osrm-customize /data/<scotland .osrm.* files name>.osrm || echo "osrm-customize failed"
+***
+
+run osrm backend - sudo docker run -p 5000:5000 -v <location of .osrm.* files>:/data osrm/osrm-backend osrm-routed --algorithm mld /data/<scotland .osrm.* files name>.osrm
+
+***
+can get frontend image as well for testing if needed - docker pull osrm/osrm-frontend
+
+launch - sudo docker run -p 9966:9966 osrm/osrm-frontend
+can view in web browser at localhost:9966
+
+this allows downloading of gpx data for any custom route with as many stops as who knows, gpx is just xml with coordinates so can use this to make a polyline & then just add popup labels & do css or whatever leaflet.js equivalent is
+NOTE: osrm front end doesn't seem to want to let me actually add more than 2 points to a route, glitches out, try analysing (probably) json message from front end to back end
+***
+
+curl "localhost:5000/route/v1/driving/<lng>,<lat>;<lng2>,<lat2>;<lng3>,<lat3>;...?overview=full"
+can do this^ for as many points as required, important to note the lat & lng are the opposite way round to in the js file
+eg. -4.xxx will be first, then 55.xxx
+this returns linestring which can be pasted into generate_route.js to generate generated_route.csv which is picked up by map.js
+
+***
+above is now automated, configure routes in route_nodes.csv then run the following:
+sudo systemctl start docker
+sudo docker run -p 5000:5000 -v /home/user/scotland_web_map/scotland_web_map_osrm_data:/data osrm/osrm-backend osrm-routed --algorithm mld /data/scotland-251209.osrm
+node generate_route.js
+
+--------------------
+
+remember to clean up any leftover docker containers & stop daemon
+
+npx serve for running static webpage server localy with node
+
+https://leafletjs.com/examples/custom-icons/ custom icons leaflet example
+https://www.svgviewer.dev/ svg editor website
+
+--------------------
+
+TODO
+- figure out how to host
+- add actual descriptions & links
+- cancel domain once done
+
+NOT NEEDED
+- move description & link into index panel
+- pictures
+- large text labels for towns on route
+- uploading pictures
+- bug on touchscreens where the user has a popup open & taps another marker fast enough to register as a tap while releasing their finger outside of the boundary of the marker that was tapped, this will close the open popup but cause no new popup to open, & if the user keeps tapping the marker that was tapped it will never open, but this behaviour ceases as soon as the user taps anywhere else
+- can't seem to get the path any smoother than that without manipulating points dynamically based on zoom (could maybe do a rolling average from either side of point)
+- experiment with different tileLayer map styles https://wiki.openstreetmap.org/wiki/Raster_tile_providers would have to get api key to even test, would this key have to be sent client side? is that a problem?
+
+--------------------
+
+QUESTIONS REGARDING ITINERARY
+- location for greenpeace / edinburgh sustainability talk?
+- should I include popups for visited towns/cities such as Edinburgh, Kirkwall, Stonehaven, John O'Groats etc.? (maybe text labels but no markers)
+- what's 'Other tidal' on 6th of May?
+- www.abdn.ac.uk/research/interdisciplinary/energy-transition/#:~:text=the%20Interdisciplinary%20Centre%20for%20Energy%20Transition - University of Aberdeen Centre for Energy Transition on 3rd of May, is this located on/in a certain campus or building? or just an institute of the uni in general?
+- is Piper Alpha Chapel on 3rd of May meant to be Piper Alpha Memorial Garden or a nearby chapel?
+- is Glasgow Youth Hospital on 12th of May the one on Park Terrace or the Glasgow Metro Youth Hostel on Buccleuch Street? (link in itinerary is apple.com)

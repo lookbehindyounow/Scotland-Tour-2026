@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-7.5 -11.5 115 166" fill="none">
+<circle cx="50" cy="46" r="55" fill="#0000ff" stroke="#aaccff" stroke-width="5"/>
+<path d="M 3.32 75.09  L 50 150  L 96.68 75.09" stroke="#aaccff" stroke-width="5" fill="#0000ff"/>
+<!-- ^marker shape & border -->
+<path stroke="#ffffff" stroke-width="3" d="M 15 70
+  A 15 15 0 0 0 29 70
+  A 15 15 0 0 1 43 70
+  A 15 15 0 0 0 57 70
+  A 15 15 0 0 1 71 70
+  A 15 15 0 0 0 85 70"/>
+<!-- ^waves -->
+<path d="M 29 70  A 20 20 0 0 1 16.65 51.52  L 83.35 51.52  A 20 20 0 0 1 71 70" stroke="#ffffff" stroke-width="4"/>
+<circle cx="32" cy="60" r="3" stroke="#ffffff" stroke-width="2"/>
+<circle cx="50" cy="60" r="3" stroke="#ffffff" stroke-width="2"/>
+<circle cx="68" cy="60" r="3" stroke="#ffffff" stroke-width="2"/>
+<!-- ^hull -->
+<path d="M 30 51  L 30 36.5  A 5 5 0 0 1 35 31.5  L 50 31.5  A 5 5 0 0 1 55 36.5  L 55 51" stroke="#ffffff" stroke-width="3"/>
+<rect x="35" y="40" width="8" height="4" rx="1" stroke="#ffffff" stroke-width="1.2"/>
+<rect x="46" y="39" width="5" height="12.92" rx="1" stroke="#ffffff" stroke-width="1.2"/>
+<rect x="36" y="23.5" width="5" height="8" rx="0.5" stroke="#ffffff" stroke-width="2"/>
+<!-- bridge -->
+<circle cx="37" cy="19" r="2" stroke="#eeeeff" stroke-width="1.5"/>
+<circle cx="32" cy="13" r="2.7" stroke="#ddddff" stroke-width="1.2"/>
+<circle cx="24" cy="7" r="4" stroke="#ccccff" stroke-width="0.8"/>
+<!-- ^smoke -->
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-7.5 -11.5 115 166" fill="none">
+<circle cx="50" cy="46" r="55" fill="#0000ff" stroke="#aaccff" stroke-width="5"/>
+<path d="M 3.32 75.09  L 50 150  L 96.68 75.09" stroke="#aaccff" stroke-width="5" fill="#0000ff"/>
+<circle cx="50" cy="46" r="45" fill="#ffffff"/>
+<!-- ^marker shape & border -->
+<path stroke="#008800" stroke-width="7.5" d="
+  M 43.25 17  H 30
+  A 10 10 0 1 0 30 37  H 35.5
+  A 10 10 0 1 1 35.5 57  H 22.25
+  M 32.75 66.5  V 7.5"/>
+<path stroke="#00dd00" stroke-width="5" d="
+  M 42 17  H 30
+  A 10 10 0 1 0 30 37  H 35.5
+  A 10 10 0 1 1 35.5 57  H 23.5
+  M 32.75 65.25  V 8.75"/>
+<!-- ^dollar -->
+<path d="M 75 52  A 2 2 0 0 0 77 50  A 19.5 19.5 0 0 0 38 50  A 2 2 0 0 0 40 52" fill="#ffbb33"/>
+<rect x="35" y="55" width="45" height="10" rx="4" fill="#cc0011"/>
+<rect x="38" y="68" width="39" height="6" rx="2" fill="#ffbb33"/>
+<path d="M 43 77  A 5 5 0 0 1 38 72  H 77  A 5 5 0 0 1 72 77" fill="#ffbb33"/>
+<!-- ^burger -->
+</svg>

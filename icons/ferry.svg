@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-7.5 -11.5 115 166" fill="none">
+<circle cx="50" cy="46" r="55" fill="#0000ff" stroke="#aaccff" stroke-width="5"/>
+<!-- ^marker circle background -->
+<path stroke="#ffffff" stroke-width="5" d="M 12.5 70
+  A 15 15 0 0 0 27.5 70
+  A 15 15 0 0 1 42.5 70
+  A 15 15 0 0 0 57.5 70
+  A 15 15 0 0 1 72.5 70
+  A 15 15 0 0 0 87.5 70"/>
+<!-- ^waves -->
+<path d="M 29 70  A 20 20 0 0 1 16.65 52  H 83.35  A 20 20 0 0 1 71 70" fill="#ffffff"/>
+<circle cx="38" cy="61" r="4" fill="#0000ff"/>
+<circle cx="62" cy="61" r="4" fill="#0000ff"/>
+<!-- ^hull -->
+<path d="M 30 50  V 37  A 5 5 0 0 1 35 32  H 50  A 5 5 0 0 1 55 37  V 50" fill="#ffffff"/>
+<rect x="36" y="37" width="13" height="5" rx="1" fill="#0000ff"/>
+<rect x="36" y="23.3" width="5" height="7" rx="1" fill="#ffffff"/>
+<!-- ^bridge -->
+<circle cx="36" cy="16" r="5" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="32" cy="10" r="7" stroke="#ffffff" stroke-width="1.5"/>
+<path d="M 16 4  A 9 9 0 1 0 26 -5" stroke="#ffffff" stroke-width="1.5"/>
+<!-- ^smoke -->
+<circle cx="50" cy="46" r="55" fill="none" stroke="#aaccff" stroke-width="5"/>
+<path d="M 3.32 75.09  L 50 150  L 96.68 75.09" stroke="#aaccff" stroke-width="5" fill="#0000ff"/>
+<!-- ^marker border (drawn over last smoke bubble) -->
+</svg>

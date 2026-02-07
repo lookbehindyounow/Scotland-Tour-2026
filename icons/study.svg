@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-7.5 -11.5 115 166" fill="none">
+<circle cx="50" cy="46" r="55" fill="#0000ff" stroke="#aaccff" stroke-width="5"/>
+<path d="M 3.32 75.09  L 50 150  L 96.68 75.09" stroke="#aaccff" stroke-width="5" fill="#0000ff"/>
+<!-- ^marker shape & border -->
+<rect x="35" y="100" width="30" height="7" rx="2" fill="#ffffff"/>
+<rect x="48" y="89" width="5" height="15" fill="#ffffff"/>
+<path d="M 25 80.39  A 42.6 42.6 0 1 0 50 3.49" stroke="#ffffff" stroke-width="5" fill="none"/>
+<circle cx="50" cy="46" r="35" fill="#ffffff"/>
+<!-- ^globe -->
+<path stroke="#0000ff" stroke-width="4" fill="none" d="M 28 29
+  V 63
+  A 40 40 0 0 1 50 63
+  A 40 40 0 0 1 72 63
+  V 29
+  A 40 40 0 0 0 50 29
+  A 40 40 0 0 0 28 29
+  Z"/>
+<path stroke="#0000ff" stroke-width="3" fill="none" d="
+  M 34 38  A 20 20 0 0 1 47 38
+  M 34 46  A 20 20 0 0 1 47 46
+  M 34 54  A 20 20 0 0 1 47 54
+  M 53 38  A 20 20 0 0 1 66 38
+  M 53 46  A 20 20 0 0 1 66 46
+  M 53 54  A 20 20 0 0 1 66 54"/>
+<!-- ^book -->
+</svg>

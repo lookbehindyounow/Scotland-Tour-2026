@@ -1,0 +1,44 @@
+, starting a line with "," in this file is effectively a comment
+, it just worked out this way when I made it skip lines that don't have coordinates 
+, a route has to start with a line starting with "#" that is effectively a titular comment
+
+# main route
+58.61204,-3.54012,NorthLink Ferry
+58.598467520263895,-3.537365425599941,Thurso
+58.52563389604882,-4.219498352899437,Bettyhill
+58.568565767750144,-4.746757834831761,Durness
+,Kinlochbervie Community Energy Hydro Scheme
+57.89905457506845,-5.156912748598565,Ullapool
+,Drumnadrochit
+,Fort William (near Steall Waterfall)
+56.672274444790546,-5.07360905919792,Glencoe
+,Kingshouse hotel
+56.438927133251816,-4.71732537869185,Tyndrum
+,Cruachan pump
+56.41945741413615,-5.474176135531224,Oban
+56.13360741334415,-5.486152714584831,Kilmartin
+,Lochgilphead (near Allt Dearg and Sròndoire Community Wind Farms)
+,Inverary
+,Loch Lomond
+55.870009446044165,-4.275571802911504,Glasgow
+55.99794631272972,-3.7732957686327286,Falkirk
+55.9521895400785,-3.1886178839413706,Edinburgh
+56.177361176874605,-3.300494066567332,Westfield EfW Facility
+56.33890142984164,-2.800934910577291,St Andrews
+,Eden Campus
+,Dunnottar Castle
+57.16723333841512,-2.102614564863276,Aberdeen
+,Elgin
+,Findhorn
+,Black Isle Hostel
+58.366676461617025,-3.895595372348243,Forsinard Lodge Tea Rooms
+58.63899804864129,-3.161770038363476,Pentland ferry
+
+# optional shortcut
+56.672274444790546,-5.07360905919792,Glencoe
+56.41945741413615,-5.474176135531224,Oban
+
+# Orkney route
+58.83199212019048,-2.9624551439040143,Pentland ferry
+,Peedie hostel
+58.96362,-3.29511,NorthLink Ferry
