@@ -77,7 +77,13 @@ let currentPopup; // when a new popup is created & assigned to this var, leaflet
 // so declaring here (globally) means only one popup can show at a time
 function createPopup(location) {
     currentPopup=L.popup().setLatLng(location.coords) // create popup at location
-    .setContent(`<div><a href="http://${location.link}">${location.name}</a><p>${location.description}</p></div>`) // content of popup
+    .setContent( // content of popup
+        `<div>
+            <h4>${location.name}</h4>
+            <a href="http://${location.link}">🢅</a>
+        </div>
+        <p>${location.description}</p>`
+    )
     .openOn(map); // render
 }
 

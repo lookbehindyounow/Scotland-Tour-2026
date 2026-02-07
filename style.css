@@ -73,7 +73,19 @@ hr{
 .leaflet-popup-content{
     margin:10px;
 }
-.leaflet-popup-content>div>p{
+.leaflet-popup-content>div{
+    display:flex;
+    justify-content:space-between;
+}
+.leaflet-popup-content>div>h4{
+    display:inline;
+}
+.leaflet-popup-content>div>a{
+    text-decoration:none;
+    font-size:large;
+    font-weight:bolder;
+}
+.leaflet-popup-content p{ /* removes leaflet's default margins for p element in popup */
     margin:0;
 }
 .leaflet-popup-tip{ /* pointy arrow part */
