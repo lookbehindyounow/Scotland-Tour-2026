@@ -47,20 +47,20 @@ console.log(3);
 // hard coding the amount of routes cause it's very hard to get client side js to scan a server side folder
 // & I didn't want to write an extra thing running server side just for this
 for (let i=0;i<3;i++) {
-    const routePoints=await fetch(`/generated_route_${i}.csv`) // get driving route points
+    const routePoints=await fetch(`./generated_route_${i}.csv`) // get driving route points
     .then(r=>r.text())
     .then(text=>text.split("\n").map(line=>line.split(","))); // format csv to array of [lat,lng]
     L.polyline(routePoints,{smoothFactor:3,weight:5}).addTo(map); // render polyline from route
 }
 for (let i=0;i<2;i++) { // do the same for ferry routes
-    const routePoints=await fetch(`/ferry_route_${i}.csv`)
+    const routePoints=await fetch(`./ferry_route_${i}.csv`)
     .then(r=>r.text())
     .then(text=>text.split("\n").map(line=>line.split(",")));
     L.polyline(routePoints,{smoothFactor:3,weight:2.5,dashArray:"5 7"}).addTo(map);
 }
 console.log(4);
 
-const locations=await fetch("/locations.csv") // get locations
+const locations=await fetch("./locations.csv") // get locations
 .then(r=>r.text())
 .then(text=> // format csv to array of objects for each location
     text.split("\n")
