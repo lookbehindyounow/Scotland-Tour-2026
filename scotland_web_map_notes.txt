@@ -41,37 +41,22 @@ sudo systemctl start docker
 sudo docker run -p 5000:5000 -v /home/user/scotland_web_map/scotland_web_map_osrm_data:/data osrm/osrm-backend osrm-routed --algorithm mld /data/scotland-251209.osrm
 node generate_route.js
 
---------------------
-
 remember to clean up any leftover docker containers & stop daemon
+--------------------
 
 npx serve for running static webpage server localy with node
 
-https://leafletjs.com/examples/custom-icons/ custom icons leaflet example
-https://www.svgviewer.dev/ svg editor website
+now hosted at www.scotlandtour2026.co.uk which points to github pages
 
 --------------------
 
 TODO
-- figure out how to host
-- add actual descriptions & links
 - cancel domain once done
 
 NOT NEEDED
 - move description & link into index panel
 - pictures
 - large text labels for towns on route
-- uploading pictures
-- bug on touchscreens where the user has a popup open & taps another marker fast enough to register as a tap while releasing their finger outside of the boundary of the marker that was tapped, this will close the open popup but cause no new popup to open, & if the user keeps tapping the marker that was tapped it will never open, but this behaviour ceases as soon as the user taps anywhere else
 - can't seem to get the path any smoother than that without manipulating points dynamically based on zoom (could maybe do a rolling average from either side of point)
 - experiment with different tileLayer map styles https://wiki.openstreetmap.org/wiki/Raster_tile_providers would have to get api key to even test, would this key have to be sent client side? is that a problem?
-
---------------------
-
-QUESTIONS REGARDING ITINERARY
-- location for greenpeace / edinburgh sustainability talk?
-- should I include popups for visited towns/cities such as Edinburgh, Kirkwall, Stonehaven, John O'Groats etc.? (maybe text labels but no markers)
-- what's 'Other tidal' on 6th of May?
-- www.abdn.ac.uk/research/interdisciplinary/energy-transition/#:~:text=the%20Interdisciplinary%20Centre%20for%20Energy%20Transition - University of Aberdeen Centre for Energy Transition on 3rd of May, is this located on/in a certain campus or building? or just an institute of the uni in general?
-- is Piper Alpha Chapel on 3rd of May meant to be Piper Alpha Memorial Garden or a nearby chapel?
-- is Glasgow Youth Hospital on 12th of May the one on Park Terrace or the Glasgow Metro Youth Hostel on Buccleuch Street? (link in itinerary is apple.com)
+- uploading pictures (wouldn't be able to do this on github pages (I don't think) so maybe just a group chat for this one)

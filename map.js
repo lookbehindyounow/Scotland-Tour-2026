@@ -94,21 +94,22 @@ function createPopup(location) {
 }
 
 locations.map(location=>{
-	console.log(location);
     const marker=L.marker(location.coords,{icon:icons[location.icon]}); // create marker for each location
+    marker.on("click",()=>window.matchMedia("(hover:none)").matches && createPopup(location)); // only handle "click" event on touchscreen/equivalent
     marker.on("mouseover",e_hover=>{ // when hovering over icon
+        if (window.matchMedia("(hover:none)").matches) return; // only handle "mouseover" event with mouse/trackpad/equivalent
         createPopup(location);
         const rect=currentPopup.getElement().getBoundingClientRect(); // get currentPopup borders
         const customBottom=e_hover.containerPoint.y; // get location's y coord
         const ac=new AbortController(); // declared here so that it's signal only works for this event listener
         document.addEventListener("mousemove",e=>{ // listener
-            (e.clientX<rect.left || rect.right<e.clientX || e.clientY<rect.top || customBottom<e.clientY)?map.closePopup(currentPopup):null;
+            (e.clientX<rect.left || rect.right<e.clientX || e.clientY<rect.top || customBottom<e.clientY) && map.closePopup(currentPopup);
             // close popup if mouse leaves the popup area (lower bound being the location's y instead of the bottom of the popup box)
         },{signal:ac.signal}); // this makes ac.abort() effective on this listener
         currentPopup.on("remove",()=>ac.abort()); // stop listening for mouse location when popup closes (for any reason)
     });
     location.marker=marker;
-    location.zoomThreshold==7?marker.addTo(map):{}; // only render markers with zoomThreshold 7 on initial load
+    location.zoomThreshold==7 && marker.addTo(map); // only render markers with zoomThreshold 7 on initial load
     return location;
 });
 
@@ -142,7 +143,7 @@ locations.forEach(location=>{ // add locations to index
             zoom=zoom==10?11:zoom;
         }
     });
-    p.onclick=()=>{ // maybe generalise this func
+    p.onclick=()=>{
         createPopup(location);
         map.setView(location.coords,zoom); // set map view to selected location marker position (zoom determined above)
     };
