@@ -79,6 +79,7 @@ hr{
 .leaflet-popup-content>div{
     display:flex;
     justify-content:space-between;
+    gap:10px;
 }
 .leaflet-popup-content>div>h4{
     display:inline;
