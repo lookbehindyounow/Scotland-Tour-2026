@@ -80,7 +80,12 @@ function createPopup(location) {
     .setContent( // content of popup
         `<div>
             <h4>${location.name}</h4>
-            <a href="http://${location.link}">🢅</a>
+            <a href="http://${location.link}">
+                <svg width="13" height="13" viewBox="0 0 100 100">
+                    <path fill="#0000" stroke="#05C" stroke-width="10"
+                    d="m43,35H5v60h60V57M45,5v10l10,10-30,30 20,20 30-30 10,10h10V5z"/>
+                </svg>
+            </a>
         </div>
         <p>${location.description}</p>`
     )
@@ -109,8 +114,8 @@ let currentRegion;
 locations.forEach(location=>{ // add locations to index
     const indexList=document.getElementById("index").lastElementChild;
     if (location.region!=currentRegion) { // new region
-        currentRegion?indexList.appendChild(document.createElement("br")):{}; // add breaks before all new regions apart from first
         currentRegion=location.region;
+        indexList.appendChild(document.createElement("br"));
         const regionHeader=document.createElement("h4");
         indexList.appendChild(regionHeader);
         regionHeader.textContent=currentRegion;
