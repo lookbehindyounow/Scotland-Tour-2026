@@ -60,6 +60,7 @@ const locations=await fetch("./locations.csv") // get locations
 .then(r=>r.text())
 .then(text=> // format csv to array of objects for each location
     text.split("\n")
+    .filter(Boolean) // remove empty lines (text editors always add one at the end of csv when saving)
     .map(line=>line.split(","))
     .map(line=>{return {
         "name":line[0],
