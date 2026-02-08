@@ -81,7 +81,7 @@ function createPopup(location) {
     .setContent( // content of popup
         `<div>
             <h4>${location.name}</h4>
-            <a href="http://${location.link}">
+            <a href="http://${location.link}" target="_blank">
                 <svg width="13" height="13" viewBox="0 0 100 100">
                     <path fill="#0000" stroke="#05C" stroke-width="10"
                     d="m43,35H5v60h60V57M45,5v10l10,10-30,30 20,20 30-30 10,10h10V5z"/>
