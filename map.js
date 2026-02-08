@@ -65,7 +65,7 @@ const locations=await fetch("./locations.csv") // get locations
     .map(line=>{return {
         "name":line[0],
         "icon":line[1],
-        "description":line[2].replace(";",","),
+        "description":line[2].replace(/;/g,","), // can't have commas in descriptions in csv file so replaced them with semi-colons
         "coords":[line[3],line[4]],
         "link":line[5],
         "zoomThreshold":line[6],
