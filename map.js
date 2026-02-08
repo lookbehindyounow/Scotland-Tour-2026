@@ -65,7 +65,7 @@ const locations=await fetch("./locations.csv") // get locations
     .map(line=>{return {
         "name":line[0],
         "icon":line[1],
-        "description":line[2],
+        "description":line[2].replace(";",","),
         "coords":[line[3],line[4]],
         "link":line[5],
         "zoomThreshold":line[6],
@@ -94,6 +94,7 @@ function createPopup(location) {
 }
 
 locations.map(location=>{
+	console.log(location);
     const marker=L.marker(location.coords,{icon:icons[location.icon]}); // create marker for each location
     marker.on("mouseover",e_hover=>{ // when hovering over icon
         createPopup(location);
