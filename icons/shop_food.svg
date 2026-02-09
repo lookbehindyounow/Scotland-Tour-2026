@@ -14,9 +14,9 @@
   A 10 10 0 1 1 35.5 57  H 23.5
   M 32.75 65.25  V 8.75"/>
 <!-- ^dollar -->
-<path d="M 75 52  A 2 2 0 0 0 77 50  A 19.5 19.5 0 0 0 38 50  A 2 2 0 0 0 40 52  Z" fill="#ffbb33" stroke="#ad6200" stroke-width="1.5"/>
+<path d="M 75 52  A 2 2 0 0 0 77 50  A 19.5 19.5 0 0 0 38 50  A 2 2 0 0 0 40 52  Z" fill="#ffbb33"/>
 <rect x="35" y="55" width="45" height="10" rx="4" fill="#cc0011"/>
-<rect x="38" y="68" width="39" height="6" rx="2" fill="#ffbb33" stroke="#ad6200" stroke-width="1.5"/>
-<path d="M 38 72  A 5 5 0 0 0 43 77  H 72  A 5 5 0 0 0 77 72" fill="#ffbb33" stroke="#ad6200" stroke-width="1.5"/>
+<rect x="38" y="68" width="39" height="6" rx="2" fill="#ffbb33"/>
+<path d="M 38 72  A 5 5 0 0 0 43 77  H 72  A 5 5 0 0 0 77 72" fill="#ffbb33"/>
 <!-- ^burger -->
 </svg>
