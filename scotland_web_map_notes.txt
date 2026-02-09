@@ -52,6 +52,7 @@ now hosted at www.scotlandtour2026.co.uk which points to github pages
 
 TODO
 - cancel domain once done
+- add an actual readme & check comments
 
 NOT NEEDED
 - move description & link into index panel

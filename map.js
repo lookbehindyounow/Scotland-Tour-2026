@@ -1,12 +1,10 @@
-const map=L.map("map",{maxBounds:[[54,-9],[62,0]]}).setView([57.6,-4.1],7); // create map object (blank & empty), set bounds, initial viewpoint & zoom
+const map=L.map("map",{maxBounds:[[54,-9],[62,0]]}).setView([57.6,-3.8],7); // create map object (blank & empty), set bounds, initial viewpoint & zoom
 const maptions={
     maxZoom:20,
     minZoom:7,
     attribution:"&copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
 }
 const normal=L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",maptions).addTo(map); // osm map images
-// const alt=L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png",maptions); // alt tileLayer with different map style
-// const layerControl=L.control.layers({"normal":normal,"alt":alt},[]).addTo(map); // allow switching between map styles
 
 const icons={ // get icons & create leaflet icon objects
     "accom":L.icon({
@@ -149,9 +147,12 @@ locations.forEach(location=>{ // add locations to index
     };
 });
 
+const flag=L.imageOverlay("./flag_thistle.png",[[57.75,-3.3],[58.4,-1.5]]).addTo(map);
+
 map.on("zoomend",()=>{
     const zoom=map.getZoom();
-    locations.forEach(location=>{
+    flag.setOpacity([,,,,,,,1,0.7,0.4,0.15,0][zoom]); // flag gets fainter the more you zoom & disappears
+    locations.forEach(location=>{ // conditionally show markers based on current zoom to reduce lag
         zoom>=location.zoomThreshold?map.addLayer(location.marker):map.removeLayer(location.marker);
     });
 });
