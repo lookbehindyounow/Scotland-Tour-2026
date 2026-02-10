@@ -107,7 +107,7 @@ locations.map(location=>{
         currentPopup.on("remove",()=>ac.abort()); // stop listening for mouse location when popup closes (for any reason)
     });
     location.marker=marker;
-    location.zoomThreshold==7 && marker.addTo(map); // only render markers with zoomThreshold 7 on initial load
+    location.zoomThreshold==1 && marker.addTo(map); // only render markers with zoomThreshold 1 on initial load
     return location;
 });
 
@@ -124,8 +124,8 @@ locations.forEach(location=>{ // add locations to index
     const p=document.createElement("p");
     indexList.appendChild(p);
     p.textContent=location.name;
-    let zoom=10; // determine zoom level to view location when clicked
-    locations.forEach(otherLocation=>{
+    let zoom=10;
+    locations.forEach(otherLocation=>{ // determine zoom level to view location when clicked
         const [x,y,x1,y1]=[...location.coords,...otherLocation.coords];
         const squareDist=(x-x1)*(x-x1)+(y-y1)*(y-y1);
         if (squareDist==0) {
@@ -147,11 +147,14 @@ locations.forEach(location=>{ // add locations to index
     };
 });
 
-const flag=L.imageOverlay("./flag_thistle.png",[[57.75,-3.3],[58.4,-1.5]]).addTo(map);
+const flag=L.imageOverlay("./flag_thistle.png",[[57.75,-3.3],[58.4,-1.5]]).addTo(map); // scotland flag in the water
 
-map.on("zoomend",()=>{
-    const zoom=map.getZoom();
-    flag.setOpacity([,,,,,,,1,0.7,0.4,0.15,0][zoom]); // flag gets fainter the more you zoom & disappears
+let lastZoom;
+map.on("move",()=>{ // changes happen smoother doing this on every move instead of every zoom
+    const zoom=map.getZoom()+0.5; // +0.5 so that markers appear between zoom levels instead of on them, was getting some flickery behaviour
+    flag.setOpacity(3.3-0.3*zoom); // flag fades as you zoom
+    if ((zoom|0)==lastZoom) return; // skip rest of loop unless integer part of zoom has changed
+    lastZoom=zoom|0;
     locations.forEach(location=>{ // conditionally show markers based on current zoom to reduce lag
         zoom>=location.zoomThreshold?map.addLayer(location.marker):map.removeLayer(location.marker);
     });
