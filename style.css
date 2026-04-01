@@ -97,6 +97,22 @@ hr{
     display:none; /* removes 'x' in the corner of popups to close them */
 }
 
+/* panel to replace popups, see setLocation in map.js */
+.tempPanel{
+    height:fit-content;
+}
+.tempPanel>div{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+}
+.tempPanel>div>h3{
+    display:inline;
+}
+.tempPanel>div>a{
+    align-content:flex-start;
+}
+
 /* polyline */
 .leaflet-interactive{
     color:#3366ff;

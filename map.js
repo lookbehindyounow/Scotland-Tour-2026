@@ -41,7 +41,7 @@ const icons={ // get icons & create leaflet icon objects
 
 // hard coding the amount of routes cause it's very hard to get client side js to scan a server side folder
 // & I didn't want to write an extra thing running server side just for this
-for (let i=0;i<3;i++) {
+for (let i=0;i<2;i++) {
     const routePoints=await fetch(`./generated_route_${i}.csv`) // get driving route points
     .then(r=>r.text())
     .then(text=>text.split("\n").map(line=>line.split(","))); // format csv to array of [lat,lng]
@@ -86,13 +86,34 @@ function createPopup(location) {
                 </svg>
             </a>
         </div>
+        <!--img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fa.hwstatic.com%2Fpropertyimages%2F5%2F551%2Fcffzlgszujpdjtbk5iic.jpg" width="150"-->
         <p>${location.description}</p>`
     )
     .openOn(map); // render
 }
 
+function setLocation(location) { // alt version of createPopup that would put the location info in the index panel, leaving the map clear of popups
+    const indexPanel=document.getElementById("index");
+    const tempPanel=document.createElement("div");
+    tempPanel.innerHTML=`
+        <div class="tempPanel">
+            <h3>${location.name}</h3>
+            <a href="http://${location.link}" target="_blank">
+                <svg width="13" height="13" viewBox="0 0 100 100">
+                    <path fill="#0000" stroke="#05C" stroke-width="10"
+                    d="m43,35H5v60h60V57M45,5v10l10,10-30,30 20,20 30-30 10,10h10V5z"/>
+                </svg>
+            </a>
+        </div>
+        <!--img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fa.hwstatic.com%2Fpropertyimages%2F5%2F551%2Fcffzlgszujpdjtbk5iic.jpg" width="150"-->
+        <p>${location.description}</p>
+    `;
+    indexPanel.prepend(tempPanel);
+}
+
 locations.map(location=>{
     const marker=L.marker(location.coords,{icon:icons[location.icon]}); // create marker for each location
+    // marker.on("click",()=>setLocation(location)); // this would call setLocation (puts location info in index panel) instead of createPopup, below is what calls the popup stuff
     marker.on("click",()=>window.matchMedia("(hover:none)").matches && createPopup(location)); // only handle "click" event on touchscreen/equivalent
     marker.on("mouseover",e_hover=>{ // when hovering over icon
         if (window.matchMedia("(hover:none)").matches) return; // only handle "mouseover" event with mouse/trackpad/equivalent
